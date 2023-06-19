@@ -32,7 +32,7 @@ const Items = () => {
         <h4 className="font-semibold">Updated At</h4>
         <span className="btn-spacer font-semibold">Actions</span>
       </div>
-      <hr class="h-px my-2 bg-gray-200 border-0 dark:bg-gray-400" />
+      <hr className="h-px my-2 bg-gray-200 border-0 dark:bg-gray-400" />
       {data.data.map((todo) => {
         return <SingleItem key={todo.id} {...todo} />;
       })}

@@ -1,6 +1,5 @@
 import React from "react";
 import { AiFillDelete } from "react-icons/ai";
-import { RxUpdate } from "react-icons/rx";
 import { useGlobalContext } from "./context";
 
 const SingleItem = ({ id, title, message, createdAt, updatedAt }) => {

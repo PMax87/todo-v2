@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 export const useFetchToDo = () => {
   const { isLoading, data, error } = useQuery({
     queryKey: ["ToDo"],
-    queryFn: () => url.get("?page=1&pageSize=10"),
+    queryFn: () => url.get(`?page=1&pageSize=10`),
   });
   return { isLoading, error, data };
 };

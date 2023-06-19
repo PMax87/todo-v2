@@ -15,13 +15,13 @@ const AppProvider = ({ children }) => {
     title: "",
     message: "",
   });
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [page, setPage] = useState(1);
 
   const { data, isLoading, error } = useFetchToDo();
   const { insertItem } = useCreateItem();
   const { modifyItem } = useModifyItem();
   const { deleteItem } = useDeleteItem();
-
-  const [isUpdating, setIsUpdating] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -74,6 +74,7 @@ const AppProvider = ({ children }) => {
         isLoading,
         error,
         isUpdating,
+        page,
         handleChange,
         handleSubmit,
         deleteItem,
