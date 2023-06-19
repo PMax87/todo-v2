@@ -49,6 +49,7 @@ const AppProvider = ({ children }) => {
             message: "",
           }),
         });
+        setIsUpdating(!isUpdating);
       } else {
         toast.error("Please fill the form");
       }

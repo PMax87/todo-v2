@@ -7,8 +7,8 @@ const Items = () => {
 
   if (isLoading) {
     return (
-      <div className="items">
-        <p>Loading...</p>
+      <div className="container text-center mt-4 p-4">
+        <p className="text-xl">Loading...</p>
       </div>
     );
   }
@@ -16,24 +16,23 @@ const Items = () => {
   if (error) {
     if (isLoading) {
       return (
-        <div className="items">
-          <p>There was an error</p>
+        <div className="container text-center mt-4 p-4">
+          <p className="text-xl">There was an error</p>
         </div>
       );
     }
   }
 
   return (
-    <div className="items">
-      <div className="items-header">
-        <div className="col-50">
-          <h4>Title</h4>
-        </div>
-        <div className="col-50">
-          <h4>Message</h4>
-        </div>
+    <div className="container mt-6">
+      <div className="grid grid-cols-5 gap-4 justify-items-center">
+        <h4 className="font-semibold">Title</h4>
+        <h4 className="font-semibold">Message</h4>
+        <h4 className="font-semibold">Created At</h4>
+        <h4 className="font-semibold">Updated At</h4>
+        <span className="btn-spacer font-semibold">Actions</span>
       </div>
-      <hr />
+      <hr class="h-px my-2 bg-gray-200 border-0 dark:bg-gray-400" />
       {data.data.map((todo) => {
         return <SingleItem key={todo.id} {...todo} />;
       })}

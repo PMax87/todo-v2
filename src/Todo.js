@@ -5,11 +5,13 @@ import Items from "./Items";
 
 const Todo = () => {
   return (
-    <section className="section-center">
+    <section className="container px-4 mx-auto bg-zinc-50 mt-4 rounded shadow-md">
       <ToastContainer className="top left" />
       <div className="container">
-        <div className="title-container">
-          <h2>Todo V2</h2>
+        <div className="container pt-8">
+          <h2 className="text-4xl text-center font-bold underline underline-offset-8">
+            Todo v2
+          </h2>
         </div>
         <Form />
         <Items />
