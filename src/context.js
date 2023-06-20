@@ -37,7 +37,7 @@ const AppProvider = ({ children }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (todo.title && todo.message) {
-      if (todo.title.length > 1 && todo.message.length > 1) {
+      if (todo.title.trim().length > 1 && todo.message.trim().length > 1) {
         if (isUpdating) {
           modifyItem(todo, {
             onSuccess: setTodo({
