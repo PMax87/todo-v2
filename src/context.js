@@ -17,8 +17,9 @@ const AppProvider = ({ children }) => {
   });
   const [isUpdating, setIsUpdating] = useState(false);
   const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(5);
 
-  const { data, isLoading, error } = useFetchToDo();
+  const { data, isLoading, error } = useFetchToDo(page, pageSize);
   const { insertItem } = useCreateItem();
   const { modifyItem } = useModifyItem();
   const { deleteItem } = useDeleteItem();

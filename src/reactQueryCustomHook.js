@@ -2,10 +2,10 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import url from "./utils";
 import { toast } from "react-toastify";
 
-export const useFetchToDo = () => {
+export const useFetchToDo = (page, pageSize) => {
   const { isLoading, data, error } = useQuery({
     queryKey: ["ToDo"],
-    queryFn: () => url.get(`?page=1&pageSize=10`),
+    queryFn: () => url.get(`?page=${page}&pageSize=${pageSize}`),
   });
   return { isLoading, error, data };
 };
