@@ -17,12 +17,17 @@ const AppProvider = ({ children }) => {
   });
   const [isUpdating, setIsUpdating] = useState(false);
   const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(5);
+  const [pageSize, setPageSize] = useState(10);
+  const [buttonForPage, setButtonForPage] = useState([]);
 
   const { data, isLoading, error } = useFetchToDo(page, pageSize);
   const { insertItem } = useCreateItem();
   const { modifyItem } = useModifyItem();
   const { deleteItem } = useDeleteItem();
+
+  if (!isLoading) {
+    console.log(data.data.length);
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,29 +36,30 @@ const AppProvider = ({ children }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!isUpdating) {
-      if (todo.title && todo.message) {
-        insertItem(todo, {
-          onSuccess: setTodo({
-            title: "",
-            message: "",
-          }),
-        });
+    if (todo.title && todo.message) {
+      if (todo.title.length > 1 && todo.message.length > 1) {
+        if (isUpdating) {
+          modifyItem(todo, {
+            onSuccess: setTodo({
+              title: "",
+              message: "",
+            }),
+          });
+          setIsUpdating(!isUpdating);
+        } else {
+          insertItem(todo, {
+            onSuccess: setTodo({
+              title: "",
+              message: "",
+            }),
+          });
+          setPage(1);
+        }
       } else {
-        toast.error("Please fill the form");
+        toast.error("Please enter more than 2 characters");
       }
     } else {
-      if (todo.title && todo.message) {
-        modifyItem(todo, {
-          onSuccess: setTodo({
-            title: "",
-            message: "",
-          }),
-        });
-        setIsUpdating(!isUpdating);
-      } else {
-        toast.error("Please fill the form");
-      }
+      toast.error("Please fill the form");
     }
   };
 
@@ -65,6 +71,15 @@ const AppProvider = ({ children }) => {
       title: todoById.title,
       message: todoById.message,
     });
+  };
+
+  const updateTodoPerPage = (numberPerPage) => {
+    console.log(numberPerPage);
+    setPageSize(numberPerPage);
+  };
+
+  const changePage = () => {
+    setPage(page + 1);
   };
 
   return (
@@ -80,6 +95,8 @@ const AppProvider = ({ children }) => {
         handleSubmit,
         deleteItem,
         getTodoById,
+        updateTodoPerPage,
+        changePage,
       }}
     >
       {children}
