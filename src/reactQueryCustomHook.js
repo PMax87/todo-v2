@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import url from "./utils";
+import { url } from "./utils";
 import { toast } from "react-toastify";
 
 export const useFetchToDo = (page, pageSize) => {

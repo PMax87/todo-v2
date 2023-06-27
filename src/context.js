@@ -74,12 +74,7 @@ const AppProvider = ({ children }) => {
   };
 
   const updateTodoPerPage = (numberPerPage) => {
-    console.log(numberPerPage);
     setPageSize(numberPerPage);
-  };
-
-  const changePage = () => {
-    setPage(page + 1);
   };
 
   return (
@@ -96,7 +91,6 @@ const AppProvider = ({ children }) => {
         deleteItem,
         getTodoById,
         updateTodoPerPage,
-        changePage,
       }}
     >
       {children}

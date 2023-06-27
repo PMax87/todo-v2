@@ -6,9 +6,7 @@ const Paginator = () => {
 
   return (
     <div className="container mt-5 mx-auto flex justify-end">
-      <div className="container">
-        <button onClick={changePage}>2</button>
-      </div>
+      <div className="container"></div>
       <div className="container flex justify-end items-center">
         <div className="w96">
           <label
